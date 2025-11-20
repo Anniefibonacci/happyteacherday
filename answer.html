@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        background-color: #fff5f5; 
+        font-family: 'Arial', cursive;
+        overflow: hidden; 
+    }
+
+    .container {
+        position: relative;
+        z-index: 10; /* để khung nằm TRÊN bóng bay */
+        text-align: center;
+        background-color: #ffebee; 
+        padding: 40px;
+        border-radius: 20px;
+        border: 3px solid #ff6b81; 
+        box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3); 
+        max-width: 600px;
+        width: 90%;
+    }
+
+    .gif_container img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .text {
+        margin-top: 10px;
+        font-size: 18px;
+        text-shadow: 1px 1px 3px rgba(255, 107, 129, 0.3);
+        color: rgba(19, 4, 6, 0.9);
+    }
+
+    /* ----- BÓNG BAY ----- */
+    .balloon, .gift, .heart {
+        position: absolute;
+        bottom: -150px;
+        animation: float 10s linear infinite;
+        opacity: 0.9;
+        z-index: 1; /* nằm sau khung */
+    }
+
+    .balloon {
+        width: 60px;
+        height: 80px;
+        border-radius: 30px 30px 35px 35px;
+    }
+
+    .balloon::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        width: 2px;
+        height: 20px;
+        background: #fff;
+    }
+
+    .gift {
+        font-size: 2em;
+        animation-duration: 8s;
+    }
+
+    /* ----- TRÁI TIM ----- */
+    .heart {
+        font-size: 25px;
+        animation-duration: 6s;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) translateX(0); }
+        100% { transform: translateY(-120vh) translateX(30px); }
+    }
+</style>
+
+<body>
+
+<div class="container">
+    <div class="gif_container">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWt1YXlxN20zZnB4ZGhydzYwbm0wb2N0M2pvN2tuMDV4NWF1ZTVrNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L3LXY5io9rFcH2lAQw/giphy.gif">
+    </div>
+
+    <p class="text">
+        <b>Nhân ngày 20/11, em xin gửi đến cô lời chúc tốt đẹp nhất. 
+        Cảm ơn cô đã luôn tận tâm, dịu dàng và tận tụy trong từng bài giảng.
+        Chúc cô luôn mạnh khỏe, hạnh phúc và tiếp tục truyền ngọn lửa yêu thương,
+        tri thức đến bao thế hệ học trò💝💝💝.</b>
+    </p>
+</div>
+
+<script>
+    // TẠO BÓNG BAY
+    for (let i = 0; i < 15; i++) {
+        let balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.background =
+            `radial-gradient(circle at 30% 30%, ${randomColor()}, ${randomColor()})`;
+        balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
+        document.body.appendChild(balloon);
+    }
+
+    // TẠO QUÀ
+    const giftEmojis = ["🎁", "💝", "🧸", "🎊", "🎀"];
+    for (let i = 0; i < 10; i++) {
+        let gift = document.createElement("div");
+        gift.classList.add("gift");
+        gift.style.left = Math.random() * window.innerWidth + "px";
+        gift.textContent = giftEmojis[Math.floor(Math.random() * giftEmojis.length)];
+        gift.style.animationDuration = (5 + Math.random() * 5) + "s";
+        document.body.appendChild(gift);
+    }
+
+    // TẠO TRÁI TIM
+    for (let i = 0; i < 20; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.textContent = "❤️";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+    }
+
+    function randomColor() {
+        const colors = ["#ff6f91", "#ff9671", "#ffc75f", "#f9f871", "#d65db1", "#845ec2", "#c7ceea"];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+</script>
+
+</body>
+</html>

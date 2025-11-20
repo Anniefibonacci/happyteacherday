@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head> 
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #fff5f5; 
+    font-family: 'Arial', cursive;
+    overflow: hidden; 
+}
+
+.container {
+    text-align: center;
+    background-color: #ffebee; 
+    padding: 40px;
+    border-radius: 20px;
+    border: 3px solid #ff6b81; 
+    box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3); 
+    max-width: 600px; 
+    width: 90%; 
+}
+
+.header_text {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff6b81; 
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(255, 107, 129, 0.2); 
+}
+
+.gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.text {
+    font-family: 'Arial', cursive;
+    overflow: hidden; 
+     margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(255, 107, 129, 0.2);
+    color :rgba(19, 4, 6, 0.906)
+}
+
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    .balloon, .gift {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 30px 30px 35px 35px;
+      opacity: 0.8;
+      animation: float 10s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+    }
+
+    .gift {
+      background: none;
+      animation-duration: 8s;
+    }
+}
+  @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      padding: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    .card h1 {
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px 8px #ff6f91;
+      margin: 0;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .balloon, .gift {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 30px 30px 35px 35px;
+      opacity: 0.8;
+      animation: float 10s linear infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+    }
+
+    .gift {
+      background: none;
+      animation-duration: 8s;
+    }
+
+    .naughty-line {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #ffe6f7;
+      text-shadow: 1px 1px 5px #ff6f91;
+      font-style: italic;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-120vh) translateX(30px); }
+    }
+    </style>
+    <body>
+        <div class="container">
+            <div class="gif_container">
+                <img src="giphy.gif">
+            </div>
+            <div>
+                <p class="text"> <b> Nhân ngày 20/11, em xin gửi đến cô Trà My lời chúc tốt đẹp nhất. Cảm ơn cô đã luôn tận tâm, dịu dàng và tận tụy trong từng bài giảng. Chúc cô luôn mạnh khỏe, hạnh phúc và tiếp tục truyền ngọn lửa yêu thương, tri thức đến bao thế hệ học trò.</.>
+            </div>
+        </div>
+         <script>
+              // Tạo bóng bay
+    for (let i = 0; i < 15; i++) {
+      let balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.left = Math.random() * window.innerWidth + "px";
+      balloon.style.background =
+        `radial-gradient(circle at 30% 30%, ${randomColor()}, ${randomColor()})`;
+      balloon.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(balloon);
+    }
+
+    // Tạo quà với emoji
+    const giftEmojis = ["🎁", "💝", "🧸", "🎊", "˚˖𓍢🌷✧˚.🎀⋆"];
+    for (let i = 0; i < 10; i++) {
+      let gift = document.createElement("div");
+      gift.classList.add("gift");
+      gift.style.left = Math.random() * window.innerWidth + "px";
+      gift.textContent = giftEmojis[Math.floor(Math.random() * giftEmojis.length)];
+      gift.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(gift);
+    }
+
+    function randomColor() {
+      const colors = ["#ff6f91", "#ff9671", "#ffc75f", "#f9f871", "#d65db1", "#845ec2", "#c7ceea"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+    </body> 
+</html>
